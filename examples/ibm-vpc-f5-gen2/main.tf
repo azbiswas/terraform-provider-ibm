@@ -1,6 +1,10 @@
+data "ibm_is_vpc" "vpc1" {
+  name = "${var.vpc_name}"
+}
+
 resource "ibm_is_security_group" "sg1" {
   name = "f5-bigip-1nic-demo-sg1"
-  vpc  = "${var.vpc_name}"
+  vpc  = "${ibm_is_vpc.vpc1.id}"
 }
 
 resource "ibm_is_security_group_rule" "egress_all" {
@@ -29,7 +33,7 @@ resource "ibm_is_security_group_rule" "sg1_rule1" {
 
 resource "ibm_is_security_group_rule" "sg1_rule2" {
   depends_on = ["ibm_is_floating_ip.fip1"]
-  group      = "${var.vpc_name.default_security_group}"
+  group      = "${ibm_is_vpc.vpc1.default_security_group}"
   direction  = "inbound"
   remote     = "0.0.0.0/0"
 
@@ -41,7 +45,7 @@ resource "ibm_is_security_group_rule" "sg1_rule2" {
 
 resource "ibm_is_security_group_rule" "sg1_rule3" {
   depends_on = ["ibm_is_floating_ip.fip1"]
-  group      = "${var.vpc_name.default_security_group}"
+  group      = "${ibm_is_vpc.vpc1.default_security_group}"
   direction  = "inbound"
   remote     = "0.0.0.0/0"
 
@@ -53,7 +57,7 @@ resource "ibm_is_security_group_rule" "sg1_rule3" {
 
 resource "ibm_is_security_group_rule" "sg1_icmp_rule" {
   depends_on = ["ibm_is_floating_ip.fip1"]
-  group      = "${var.vpc_name.default_security_group}"
+  group      = "${ibm_is_vpc.vpc1.default_security_group}"
   direction  = "inbound"
   remote     = "0.0.0.0/0"
 
@@ -70,7 +74,7 @@ resource "ibm_is_security_group_network_interface_attachment" "sgnic1" {
 
 resource "ibm_is_subnet" "subnet1" {
   name            = "f5-bigip-1nic-demo-subnet1"
-  vpc             = "${var.vpc_name.id}"
+  vpc             = "${ibm_is_vpc.vpc1.id}"
   zone            = "${var.zone}"
   ipv4_cidr_block = "${var.subnet}"
 }
