@@ -4,8 +4,7 @@ variable "zone" {
 }
 
 variable "vpc_name" {
-  default = "f5-bigip-1nic-demo-vpc"
-  description = "The name of your VPC to be provisioned."
+  description = "The name of your VPC"
 }
 
 variable "ssh_public_key" {
@@ -19,7 +18,7 @@ variable "ssh_key_name" {
 }
 
 variable "f5_image" {
-  default = "r006-648e7564-a7e1-40d5-8e92-6ff67c26ce9c"
+  default = "nfv-f5-15-0-1"
   description = "The ID of the F5 custom image provisioned in your IBM Cloud account. To list available images, run `ibmcloud is images`. The default image is for an `f5-bigip` image in a demo account."
 }
 
@@ -31,6 +30,11 @@ variable "f5_vsi_name" {
 variable "profile" {
   default = "bx2-2x8"
   description = "The profile of compute CPU and memory resources that you want your VPC virtual servers to have. To list available profiles, run `ibmcloud is instance-profiles`."
+}
+
+variable "subnet" {
+  default = "10.240.0.0/24"
+  
 }
 
 variable "f5_license" {

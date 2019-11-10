@@ -76,7 +76,7 @@ resource "ibm_is_subnet" "subnet1" {
   name            = "f5-bigip-1nic-demo-subnet1"
   vpc             = "${ibm_is_vpc.vpc1.id}"
   zone            = "${var.zone}"
-  ipv4_cidr_block = "10.240.0.0/24"
+  ipv4_cidr_block = "${var.subnet}"
 }
 
 resource "ibm_is_ssh_key" "ssh1" {
