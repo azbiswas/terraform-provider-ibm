@@ -1,7 +1,3 @@
-resource "ibm_is_vpc" "vpc1" {
-  name = "${var.vpc_name}"
-}
-
 resource "ibm_is_security_group" "sg1" {
   name = "f5-bigip-1nic-demo-sg1"
   vpc  = "${ibm_is_vpc.vpc1.id}"
