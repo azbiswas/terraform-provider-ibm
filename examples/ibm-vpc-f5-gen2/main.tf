@@ -1,4 +1,4 @@
-data "ibm_is_vpc" "vpc1" {
+resource "ibm_is_vpc" "vpc1" {
   name = "${var.vpc_name}"
 }
 
