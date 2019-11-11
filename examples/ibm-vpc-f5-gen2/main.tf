@@ -1,6 +1,6 @@
 resource "ibm_is_vpc" "vpc1" {
   name = "${var.vpc_name}"
-  resource_group = "${var.resourc_group}"
+  resource_group = "${var.resource_group}"
 }
 
 resource "ibm_is_security_group" "sg1" {
