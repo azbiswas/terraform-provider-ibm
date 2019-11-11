@@ -17,7 +17,7 @@ variable "ssh_public_key" {
 }
 
 variable "ssh_key_name" {
-  default = "f5-ssh-pub-key"
+  default = ""
   description = "The name of the public SSH key."
 }
 
