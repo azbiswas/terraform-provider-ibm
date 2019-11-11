@@ -3,6 +3,10 @@ variable "zone" {
   description = "The VPC Zone that you want your VPC networks and virtual servers to be provisioned in. To list available zones, run `ibmcloud is zones`."
 }
 
+variable "resource_group" {
+  description = "The name of the resource group"
+}
+
 variable "vpc_name" {
   description = "The name of your VPC"
 }
