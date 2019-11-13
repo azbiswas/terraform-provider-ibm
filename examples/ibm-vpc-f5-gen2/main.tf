@@ -96,8 +96,8 @@ resource "ibm_is_instance" "ins1" {
 
   vpc  = "${ibm_is_vpc.vpc1.id}"
   zone = "${var.zone}"
-  keys = "[]"
-  # keys = ["${ibm_is_ssh_key.ssh1.id}"]
+  # keys = [""]
+  keys = ["${ibm_is_ssh_key.ssh1.id}"]
   # user_data = "$(replace(file("f5-userdata.sh"), "F5-LICENSE-REPLACEMENT", var.f5_license)"
 
   //User can configure timeouts
